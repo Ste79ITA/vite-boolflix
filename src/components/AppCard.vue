@@ -3,6 +3,12 @@ export default {
   data() {
     return {};
   },
+  props: {
+    items: {
+      type: Object,
+      required: true,
+    },
+  },
 };
 </script>
 
@@ -10,7 +16,10 @@ export default {
   <div>
     <section>
       <main class="main-section">
-        <h1>RESULTS</h1>
+        <h1>Titolo - {{ this.items.title }}</h1>
+        <h3>Titolo originale - {{ this.items.original_title }}</h3>
+        <h4>Lingua: {{ this.items.original_language }}</h4>
+        <h4>Voto: {{ this.items.vote_average }}</h4>
       </main>
     </section>
   </div>
@@ -26,5 +35,7 @@ export default {
   align-items: center;
   margin-top: 50px;
   border-radius: 15px;
+  display: flex;
+  flex-direction: column;
 }
 </style>

@@ -18,8 +18,4 @@ export default {
   </div>
 </template>
 
-<style lang="scss">
-.main {
-  border: 1px solid greenyellow;
-}
-</style>
+<style lang="scss"></style>

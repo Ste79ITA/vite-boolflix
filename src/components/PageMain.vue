@@ -1,15 +1,29 @@
 <script>
 import { store } from '../store.js';
 import AppCard from './AppCard.vue';
+import axios from 'axios';
 
 export default {
   data() {
-    return { store };
+    return {
+      store,
+      API_KEY: 'api_key=c37e58bb593630c699aa93fad9493b50',
+      API_MovieAddress: 'https://api.themoviedb.org/3/search/movie?',
+      API_TvAddress: 'https://api.themoviedb.org/3/search/tv?',
+      movieResults: {},
+    };
   },
   components: { AppCard },
   methods: {
     search() {
-      console.log(store.searchText);
+      axios
+        .get(
+          `${this.API_MovieAddress}${this.API_KEY}&query=${store.searchText}`
+        )
+        .then((res) => {
+          this.movieResults = res.data;
+          console.log(this.movieResults.results[0]);
+        });
     },
   },
   updated() {},
@@ -27,7 +41,10 @@ export default {
       <button @click="search()">Search</button>
     </main>
     <div class="card-container">
-      <AppCard />
+      <AppCard
+        v-for="(result, i) in this.movieResults.results"
+        :items="this.movieResults.results[i]"
+      />
     </div>
   </div>
 </template>
