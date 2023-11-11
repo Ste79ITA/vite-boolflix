@@ -1,6 +1,7 @@
 <script>
 import { store } from '../store.js';
-import AppCard from './AppCard.vue';
+import AppCardMovie from './AppCardMovie.vue';
+import AppCardTv from './AppCardTv.vue';
 import axios from 'axios';
 
 export default {
@@ -11,9 +12,10 @@ export default {
       API_MovieAddress: 'https://api.themoviedb.org/3/search/movie?',
       API_TvAddress: 'https://api.themoviedb.org/3/search/tv?',
       movieResults: {},
+      tvResults: {},
     };
   },
-  components: { AppCard },
+  components: { AppCardMovie, AppCardTv },
   methods: {
     search() {
       axios
@@ -22,11 +24,15 @@ export default {
         )
         .then((res) => {
           this.movieResults = res.data;
-          console.log(this.movieResults.results[0]);
+        });
+
+      axios
+        .get(`${this.API_TvAddress}${this.API_KEY}&query=${store.searchText}`)
+        .then((res) => {
+          this.tvResults = res.data;
         });
     },
   },
-  updated() {},
 };
 </script>
 
@@ -34,17 +40,28 @@ export default {
   <div class="section">
     <main class="main-section">
       <input
+        @keyup.enter="search()"
         v-model="this.store.searchText"
         type="text"
         placeholder="Cerca un film o una serie Tv"
       />
-      <button @click="search()">Search</button>
+      <button @click="search()" @keyup.enter="search()">Search</button>
     </main>
-    <div class="card-container">
-      <AppCard
-        v-for="(result, i) in this.movieResults.results"
-        :items="this.movieResults.results[i]"
-      />
+    <div class="container">
+      <div class="card-container">
+        <AppCardMovie
+          v-for="(result, i) in this.movieResults.results"
+          :items="this.movieResults.results[i]"
+          key="i"
+        />
+      </div>
+      <div class="card-container">
+        <AppCardTv
+          v-for="(result, i) in this.tvResults.results"
+          :items="this.tvResults.results[i]"
+          key="i"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -71,5 +88,9 @@ export default {
   margin-top: 50px;
   padding-bottom: 50px;
   border-radius: 20px;
+}
+
+.container {
+  display: flex;
 }
 </style>
