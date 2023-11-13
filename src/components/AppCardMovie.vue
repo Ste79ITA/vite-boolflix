@@ -16,10 +16,12 @@ export default {
   <div>
     <section>
       <main class="main-section">
-        <h1>Titolo - {{ this.items.title }}</h1>
-        <h3>Titolo originale - {{ this.items.original_title }}</h3>
-        <h4>Lingua: {{ this.items.original_language }}</h4>
-        <h4>Voto: {{ this.items.vote_average }}</h4>
+        <ul>
+          <li>Titolo - {{ this.items.title }}</li>
+          <li>Titolo originale - {{ this.items.original_title }}</li>
+          <li>Lingua: {{ this.items.original_language }}</li>
+          <li>Voto: {{ this.items.vote_average }}</li>
+        </ul>
       </main>
     </section>
   </div>
