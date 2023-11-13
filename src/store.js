@@ -15,4 +15,5 @@ export const store = reactive({
     fr: '/flags/fr.jpg',
     it: '/flags/ita.jpg',
   },
+  posterUrl: 'https://image.tmdb.org/t/p/w154/',
 });

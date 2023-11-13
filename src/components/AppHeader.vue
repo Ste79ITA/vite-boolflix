@@ -15,7 +15,7 @@ export default {
         @keyup.enter="$emit('search')"
         v-model="store.searchText"
         type="text"
-        placeholder="Cerca un film o una serie Tv"
+        placeholder="Cerca tra film e serie Tv"
       />
       <button @click="$emit('search')">Search</button>
     </nav>

@@ -2,7 +2,7 @@
 import { store } from '../store';
 export default {
   data() {
-    return {};
+    return { store };
   },
   props: {
     items: {
@@ -26,6 +26,9 @@ export default {
     <section>
       <main class="main-section">
         <ul>
+          <li>
+            <img :src="`${store.posterUrl}${item.poster_path} `" alt="" />
+          </li>
           <li>Titolo - {{ item.title }}</li>
           <li>Titolo originale - {{ item.original_title }}</li>
           <li v-if="srcFlag">
