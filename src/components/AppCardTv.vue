@@ -17,6 +17,9 @@ export default {
     item: function () {
       return this.items;
     },
+    voteToStar: function () {
+      return Math.round(this.item.vote_average / 2);
+    },
   },
 };
 </script>
@@ -26,7 +29,7 @@ export default {
     <section>
       <main class="main-section">
         <ul>
-          <li>
+          <li v-if="item.backdrop_path">
             <img :src="`${store.posterUrl}${item.backdrop_path} `" alt="" />
           </li>
           <li>Titolo - {{ item.name }}</li>
@@ -35,7 +38,7 @@ export default {
             <img class="flag-img" :src="srcFlag" alt="" />
           </li>
           <li v-else>Lingua: {{ item.original_language }}</li>
-          <li>Voto: {{ item.vote_average }}</li>
+          <li>Voto: {{ voteToStar }}</li>
         </ul>
       </main>
     </section>
