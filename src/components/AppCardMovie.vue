@@ -1,4 +1,5 @@
 <script>
+import { store } from '../store';
 export default {
   data() {
     return {};
@@ -9,6 +10,14 @@ export default {
       required: true,
     },
   },
+  computed: {
+    srcFlag: function () {
+      return store.flags[this.items.original_language];
+    },
+    item: function () {
+      return this.items;
+    },
+  },
 };
 </script>
 
@@ -17,10 +26,13 @@ export default {
     <section>
       <main class="main-section">
         <ul>
-          <li>Titolo - {{ this.items.title }}</li>
-          <li>Titolo originale - {{ this.items.original_title }}</li>
-          <li>Lingua: {{ this.items.original_language }}</li>
-          <li>Voto: {{ this.items.vote_average }}</li>
+          <li>Titolo - {{ item.title }}</li>
+          <li>Titolo originale - {{ item.original_title }}</li>
+          <li v-if="srcFlag">
+            <img class="flag-img" :src="srcFlag" alt="" />
+          </li>
+          <li v-else>Lingua: {{ item.original_language }}</li>
+          <li>Voto: {{ item.vote_average }}</li>
         </ul>
       </main>
     </section>
@@ -39,5 +51,9 @@ export default {
   border-radius: 15px;
   display: flex;
   flex-direction: column;
+}
+
+.flag-img {
+  width: 30px;
 }
 </style>

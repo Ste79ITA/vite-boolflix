@@ -7,4 +7,12 @@ export const store = reactive({
   API_TvAddress: 'https://api.themoviedb.org/3/search/tv',
   movieResults: [],
   tvResults: [],
+  flags: {
+    en: '/flags/uk.jpg',
+    ja: '/flags/jp.jpg',
+    de: '/flags/de.jpg',
+    es: '/flags/es.jpg',
+    fr: '/flags/fr.jpg',
+    it: '/flags/ita.jpg',
+  },
 });
