@@ -35,3 +35,18 @@ menu {
 .container {
   display: flex;
 }
+
+.flag-img {
+  width: 30px;
+}
+
+.stars {
+  display: flex;
+
+  .star {
+    color: yellow;
+    &:first-child {
+      padding-left: 5px;
+    }
+  }
+}

@@ -38,14 +38,19 @@ export default {
             <img class="flag-img" :src="srcFlag" alt="" />
           </li>
           <li v-else>Lingua: {{ item.original_language }}</li>
-          <li>Voto: {{ voteToStar }}</li>
+          <li class="stars">
+            Voto:
+            <div class="star" v-for="star in voteToStar">
+              <font-awesome-icon icon="fa-solid fa-star" />
+            </div>
+          </li>
         </ul>
       </main>
     </section>
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .main-section {
   max-width: 700px;
   background-color: grey;
@@ -57,9 +62,5 @@ export default {
   border-radius: 15px;
   display: flex;
   flex-direction: column;
-}
-
-.flag-img {
-  width: 30px;
 }
 </style>
