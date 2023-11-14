@@ -40,8 +40,10 @@ export default {
           <li v-else>Lingua: {{ item.original_language }}</li>
           <li class="stars">
             Voto:
-            <div class="star" v-for="star in voteToStar">
-              <font-awesome-icon icon="fa-solid fa-star" />
+            <div class="star" v-for="star in 5">
+              <font-awesome-icon
+                :icon="[star <= voteToStar ? 'fas' : 'far', 'star']"
+              />
             </div>
           </li>
         </ul>
