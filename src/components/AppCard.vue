@@ -71,11 +71,17 @@ export default {
           <li v-else><span>Lingua: </span>{{ item.original_language }}</li>
           <li class="stars">
             <span>Voto: </span>
-            <div class="star" v-for="star in 5">
+            <div class="star" v-for="star in 5" :key="star">
               <font-awesome-icon
                 :icon="[star <= voteToStar ? 'fas' : 'far', 'star']"
               />
             </div>
+            <!-- <div class="star" v-for="star in voteToStar" :key="star">
+              <font-awesome-icon :icon="['fas', 'star']" />
+            </div>
+            <div class="star" v-for="star in 5 - voteToStar" :key="star">
+              <font-awesome-icon :icon="['far', 'star']" />
+            </div> -->
           </li>
           <li>
             <span>Sinossi: </span>
