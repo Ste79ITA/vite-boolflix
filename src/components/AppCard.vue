@@ -53,6 +53,14 @@ export default {
             alt=""
           />
         </div>
+        <div v-else>
+          <img
+            :class="{ toggleContent: this.contentIsVisible }"
+            class="card-img"
+            src="/no-poster.png"
+            alt=""
+          />
+        </div>
         <ul class="card-content">
           <li><span>Titolo: </span> {{ item.title || item.name }}</li>
           <li>
@@ -133,5 +141,9 @@ span {
 li {
   margin-bottom: 10px;
   font-weight: 100;
+}
+
+.noPoster {
+  background-color: red;
 }
 </style>

@@ -52,6 +52,7 @@ export default {
 .main-section {
   display: flex;
   flex-direction: column;
+  padding: 0 20px;
 }
 
 .card-container {
@@ -62,7 +63,7 @@ export default {
 
 .movie-row,
 .tv-row {
-  padding: 10px 20px;
+  padding: 10px 0px;
   overflow-x: auto;
 }
 </style>
