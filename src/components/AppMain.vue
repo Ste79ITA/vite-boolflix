@@ -1,7 +1,6 @@
 <script>
 import { store } from '../store.js';
-import AppCardMovie from './AppCardMovie.vue';
-import AppCardTv from './AppCardTv.vue';
+import AppCard from './AppCard.vue';
 
 export default {
   data() {
@@ -9,7 +8,7 @@ export default {
       store,
     };
   },
-  components: { AppCardMovie, AppCardTv },
+  components: { AppCard },
   computed: {
     movieResults: function () {
       return store.movieResults.results;
@@ -21,24 +20,44 @@ export default {
 };
 </script>
 <template>
-  <div class="section">
-    <div class="container">
+  <div class="main-section">
+    <div class="movie-row">
+      <template v-if="movieResults" class="movies-row">
+        <h1>Movies</h1>
+        <div class="card-container">
+          <AppCard
+            v-for="(result, i) in movieResults"
+            :items="movieResults[i]"
+            :key="movieResults[i].id"
+          />
+        </div>
+      </template>
+    </div>
+    <!-- <template v-if="tvResults" class="tv-row">
+      <h1>TV Series</h1>
       <div class="card-container">
-        <AppCardMovie
-          v-for="(result, i) in movieResults"
-          :items="movieResults[i]"
-          :key="movieResults[i].id"
-        />
-      </div>
-      <div class="card-container">
-        <AppCardTv
+        <AppCard
           v-for="(result, i) in tvResults"
           :items="tvResults[i]"
           :key="tvResults[i].id"
         />
       </div>
-    </div>
+    </template> -->
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.main-section {
+  display: flex;
+}
+
+.card-container {
+  margin: 0 auto;
+  margin-top: 20px;
+  display: flex;
+}
+
+.movie-row {
+  padding: 10px 20px;
+}
+</style>
