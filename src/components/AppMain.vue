@@ -11,10 +11,10 @@ export default {
   components: { AppCard },
   computed: {
     movieResults: function () {
-      return store.movieResults.results;
+      return store.movieResults;
     },
     tvResults: function () {
-      return store.tvResults.results;
+      return store.tvResults;
     },
   },
 };

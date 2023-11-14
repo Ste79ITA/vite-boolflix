@@ -29,7 +29,12 @@ export default {
           },
         })
         .then((res) => {
-          store.movieResults = res.data;
+          store.movieResults = res.data.results;
+        })
+        .catch((er) => {
+          console.log(err);
+          store.movieResults = '';
+          store.tvResults = '';
         });
 
       axios
@@ -41,7 +46,16 @@ export default {
           },
         })
         .then((res) => {
-          store.tvResults = res.data;
+          store.tvResults = res.data.results;
+          store.tvResults.forEach((serie) => {
+            serie.title = serie.name;
+            serie.original_title = serie.original_name;
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+          store.movieResults = '';
+          store.tvResults = '';
         });
     },
   },

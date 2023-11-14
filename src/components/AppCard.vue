@@ -27,11 +27,9 @@ export default {
   methods: {
     showContent() {
       this.contentIsVisible = true;
-      console.log('SHOW', this.contentIsVisible);
     },
     hideContent() {
       this.contentIsVisible = false;
-      console.log('HIDE', this.contentIsVisible);
     },
   },
 };
@@ -62,10 +60,10 @@ export default {
           />
         </div>
         <ul class="card-content">
-          <li><span>Titolo: </span> {{ item.title || item.name }}</li>
-          <li>
+          <li><span>Titolo: </span> {{ item.title }}</li>
+          <li v-if="item.title !== item.original_title">
             <span>Titolo originale: </span>
-            {{ item.original_title || item.original_name }}
+            {{ item.original_title }}
           </li>
           <li v-if="srcFlag">
             <span>Lingua: </span><img class="flag-img" :src="srcFlag" alt="" />
