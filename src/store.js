@@ -8,12 +8,12 @@ export const store = reactive({
   movieResults: [],
   tvResults: [],
   flags: {
-    en: '/flags/uk.jpg',
-    ja: '/flags/jp.jpg',
-    de: '/flags/de.jpg',
-    es: '/flags/es.jpg',
-    fr: '/flags/fr.jpg',
-    it: '/flags/ita.jpg',
+    en: '/flags/uk.png',
+    ja: '/flags/jp.png',
+    de: '/flags/de.png',
+    es: '/flags/es.png',
+    fr: '/flags/fr.png',
+    it: '/flags/ita.png',
   },
   posterUrl: 'https://image.tmdb.org/t/p/w154/',
 });

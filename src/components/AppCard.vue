@@ -110,7 +110,8 @@ export default {
 }
 
 .toggleContent {
-  z-index: -1;
+  opacity: 0;
+  transition: 0.5s;
 }
 
 .flag-img {
@@ -123,9 +124,6 @@ export default {
 
   .star {
     color: yellow;
-    &:first-child {
-      margin-left: 50px;
-    }
   }
 }
 span {

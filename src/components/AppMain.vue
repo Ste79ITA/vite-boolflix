@@ -33,22 +33,25 @@ export default {
         </div>
       </template>
     </div>
-    <!-- <template v-if="tvResults" class="tv-row">
-      <h1>TV Series</h1>
-      <div class="card-container">
-        <AppCard
-          v-for="(result, i) in tvResults"
-          :items="tvResults[i]"
-          :key="tvResults[i].id"
-        />
-      </div>
-    </template> -->
+    <div class="tv-row">
+      <template v-if="tvResults" class="tv-row">
+        <h1>TV Series</h1>
+        <div class="card-container">
+          <AppCard
+            v-for="(result, i) in tvResults"
+            :items="tvResults[i]"
+            :key="tvResults[i].id"
+          />
+        </div>
+      </template>
+    </div>
   </div>
 </template>
 
 <style scoped>
 .main-section {
   display: flex;
+  flex-direction: column;
 }
 
 .card-container {
@@ -57,7 +60,9 @@ export default {
   display: flex;
 }
 
-.movie-row {
+.movie-row,
+.tv-row {
   padding: 10px 20px;
+  overflow-x: auto;
 }
 </style>
